@@ -33,10 +33,6 @@ app.use('/task',async (req,res,next)=>{
   }
 })
 
-app.use("/",async (req,res)=>{
-  res.send("Hola");
-})
-
 app.use(router)
 
 const server = app.listen(3002, () =>{
