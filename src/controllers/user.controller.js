@@ -83,12 +83,16 @@ export const verifyLogin = async (req, res) => {
         password: password,
       },
     });
-    const token = jwt.sign({id:verify.id, email:verify.email}, env.SECRET);
-    const data = {
-      data:verify,
-      token:token
+    if(verify){
+      const token = jwt.sign({id:verify.id, email:verify.email}, env.SECRET);
+      const data = {
+        data:verify,
+        token:token
+      }
+      res.json(data);
+    }else{
+      res.status(404).send("Credenciales Invalidas");
     }
-    res.json(data);
   } catch (e) {
     if(e === 'P1012'){
       res.status(400).send('El correo ya esta en uso');
