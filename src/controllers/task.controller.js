@@ -27,6 +27,26 @@ export const addTasks = async (req, res) => {
     res.json(register)
 }
 
+export const getTaskByName = async (req, res) =>{
+    const {name} = req.params;
+    console.log("/tasks name")
+    try {
+        const test = await prisma.task.findFirstOrThrow({
+            where:{
+                name: name
+            },
+        })
+        res.json(test)
+    } catch (e) {
+        if(e === 'P2025'){
+            res.status(404).send('No existe la tarea');
+          }else{
+            res.status(400).send('Error: ' + e)
+          }
+    }
+    
+}
+
 export const getTaskById = async (req, res) =>{
     const {id} = req.params;
     console.log("/tasks id")
