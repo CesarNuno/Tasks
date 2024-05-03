@@ -6,7 +6,7 @@ const router =  Router()
 
 router.get('/task/:id', getTasks)
 router.get('/task/:id/number',getTaskById)
-router.get('/task/:name/name',getTaskByName)
+router.get('/task/:name/:id/name',getTaskByName)
 router.get('/task/:id/completed',completedTasks)
 router.get('/task/:id/progress',inProgressTasks)
 router.post('/task/', addTasks )
