@@ -28,12 +28,13 @@ export const addTasks = async (req, res) => {
 }
 
 export const getTaskByName = async (req, res) =>{
-    const {name} = req.params;
+    const {name,id} = req.params;
     console.log("/tasks name")
     try {
         const test = await prisma.task.findFirstOrThrow({
             where:{
-                name: name
+                name: name,
+                userId: id
             },
         })
         res.json(test)
