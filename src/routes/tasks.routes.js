@@ -11,7 +11,7 @@ router.get('/task/:id/completed',completedTasks)
 router.get('/task/:id/progress',inProgressTasks)
 router.post('/task/', addTasks )
 router.put('/task/:id', updateTask)
-router.put('/task/:id/finish',completeTask)
+router.put('/task/:id/finished',completeTask)
 router.delete('/task/:id', deleteTask)
 
 router.get('/user/', getUser)
